@@ -14,45 +14,6 @@ extern "C" {
 }
 #endif
 
-/***********************************************
- *         NOTES on check2DHeat.
- ***********************************************
- *         
- *  First of, I apologize its wonky. 
- *
- *  Email me ktibbett@uncc.edu with any issues/concerns with this. Dr. Saule or the other
- *    TA's are not familiar with how it works. 
- *
- * Params:
- *  n - is the same N from the command line, NOT the process's part of N
- *  P - the total amount of processes ie what MPI_Comm_size gives you.
- *  k - assumes n/2 > k-1 , otherwise may return false negatives.
- *
- *   
- * Disclaimer:
- ***
- *** Broken for P is 9. Gives false negatives, for me it was always
- ***  ranks 0, 3, 6. I have not found issues withsize 4, or 16, and these
- ***  are what `make test` will use.
- ***
- *
- * Usage:
- *  When code is WRONG returns TRUE. Short example below
- *  if (check2DHeat(...)) {
- *    // oh no it is (maybe) wrong  
- *    std::cout<<"rank: "<<rank<<" is incorrect"<<std::endl;
- *  }
- *
- *
- *
- *  I suggest commenting this out when running the bench
- *
- *
- * - Kyle
- *
- *************/
-
-
 //Use similarily as the genA, genx from matmult assignment.
 double genH0(long row, long col, long n) {
   double val = (double)(col == (n/2));
